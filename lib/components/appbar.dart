@@ -8,12 +8,25 @@ class AppbarActionSide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.shopping_cart_outlined,
-            color: mainColor50,
-          ),
+        Stack(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+                color: mainColor50,
+              ),
+            ),
+            Positioned(
+              top: -5,
+              child: Container(
+                decoration:
+                    BoxDecoration(color: mainColor100, shape: BoxShape.circle),
+                padding: const EdgeInsets.all(4),
+                child: Text("0"),
+              ),
+            ),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 24, 0),

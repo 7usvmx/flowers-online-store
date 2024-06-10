@@ -17,6 +17,8 @@ class MainDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Drawer(
+        
+        surfaceTintColor: mainColor900,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -24,7 +26,13 @@ class MainDrawer extends StatelessWidget {
               children: [
                 //! user account details
                 UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: mainColor900),
+                  decoration: BoxDecoration(
+                    // image: DecorationImage(
+                    //   image: AssetImage('assets/images/test.jpg'),
+                    //   fit: BoxFit.cover,
+                    // ),
+                    color: mainColor900,
+                  ),
                   accountName: Text(accountName),
                   accountEmail: Text(accountEmail),
                   currentAccountPicture: CircleAvatar(
@@ -57,6 +65,13 @@ class MainDrawer extends StatelessWidget {
                 ListTile(
                   title: Text("Settings"),
                   leading: Icon(Icons.settings_outlined),
+                  onTap: () {},
+                  contentPadding: EdgeInsets.all(10),
+                ),
+                divider,
+                ListTile(
+                  title: Text("About"),
+                  leading: Icon(Icons.question_mark_outlined),
                   onTap: () {},
                   contentPadding: EdgeInsets.all(10),
                 ),

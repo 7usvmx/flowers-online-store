@@ -3,6 +3,8 @@
 import 'package:flowers/components/appbar.dart';
 import 'package:flowers/components/drawer.dart';
 import 'package:flowers/constants/colors_sizedbox.dart';
+import 'package:flowers/models/products.dart';
+import 'package:flowers/screens/details.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Products Prods = Products();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,21 +43,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 22,
               ),
-              itemCount: 4,
-              itemBuilder: (context, index) {
+              itemCount: Prods.products.length,
+              itemBuilder: (context, int index) {
                 return Stack(
                   alignment: Alignment.center,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: mainColor900,
-                      ),
-                      height: 80,
-                      width: 80,
-                    ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailsScreen(),
+                          ),
+                        );
+                      },
                       child: GridTile(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(18),
-                                  child: Text("image"),
+                                  child: Image.asset(
+                                      Prods.products[index].imgPath),
                                 ),
                               ],
                             )
@@ -74,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {},
                             icon: Icon(Icons.add_shopping_cart_outlined),
                           ),
-                          leading: Text(" \$123 "),
+                          leading: Text(" \$${Prods.products[index].price}"),
                           title: Text(
                             "",
                           ),
